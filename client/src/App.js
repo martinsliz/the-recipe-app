@@ -1,15 +1,22 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import axios from 'axios'
-import home from './pages/home'
+// import axios from 'axios'
+import Home from './pages/home'
+import Auth from './pages/auth'
+import NewRecipe from './pages/newRecipe'
+import SavedRecipes from './pages/savedRecipes'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <Routes>
-        <Route path="/" element={home} />
+        <Route path="/" element={<Home />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/newRecipe" element={<NewRecipe />} />
+        <Route path="/savedRecipes" element={<SavedRecipes />} />
       </Routes>
-      <h1>Hello</h1>
     </div>
   )
 }
