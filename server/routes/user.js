@@ -7,6 +7,15 @@ import { UserModel } from '../models/Users.js'
 
 router.get('/', (req, res) => res.send('OK!'))
 
+router.get('/users', async (req, res) => {
+  try {
+    const users = await UserModel.find()
+    return res.status(200).json({ users })
+  } catch (error) {
+    console.error(error)
+  }
+})
+
 router.post('/register', async (req, res) => {
   const { username, password } = req.body
   const user = await UserModel.findOne({ username })
