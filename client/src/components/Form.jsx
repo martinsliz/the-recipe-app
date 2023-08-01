@@ -16,7 +16,6 @@ const Form = ({
           <label htmlFor="username">Username: </label>
           <input
             type="text"
-            id="username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
@@ -24,8 +23,7 @@ const Form = ({
         <div className="form-group">
           <label htmlFor="password">Password: </label>
           <input
-            type="text"
-            id="password"
+            type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
