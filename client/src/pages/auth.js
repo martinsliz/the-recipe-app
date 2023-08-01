@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { BASE_URL } from '../globals'
 // import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Form from '../components/Form'
@@ -38,8 +39,11 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.post('')
-    } catch (err) {}
+      await axios.post(`${BASE_URL}/register`, { username, password })
+      alert('Registration completed!')
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (
