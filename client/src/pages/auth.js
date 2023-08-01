@@ -8,9 +8,8 @@ import { useCookies } from 'react-cookie'
 const auth = () => {
   return (
     <div className="auth">
-      <h1>Register / Login</h1>
-      <Login />
       <Register />
+      <Login />
     </div>
   )
 }
