@@ -4,9 +4,9 @@ import { Route, Routes } from 'react-router-dom'
 // import axios from 'axios'
 import Home from './pages/home'
 import Auth from './pages/auth'
-import NewRecipe from './components/newRecipe'
-import SavedRecipes from './pages/savedRecipes'
 import Navbar from './components/Navbar'
+import NewRecipe from './components/NewRecipe'
+import SavedRecipes from './components/SavedRecipes'
 
 function App() {
   const [username, setUsername] = useState('')
