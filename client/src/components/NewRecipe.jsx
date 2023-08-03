@@ -2,17 +2,18 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useGetUserID } from '../hooks/useGetUserID'
 import { useNavigate } from 'react-router-dom'
-// import { useCookies } from 'react-cookie'
+import { useCookies } from 'react-cookie'
 
 const NewRecipe = () => {
   const userID = useGetUserID()
+  const [cookies, _] = useCookies(['access_token'])
   const [recipe, setRecipe] = useState({
     name: '',
     description: '',
     ingredients: [],
     instructions: '',
     imageUrl: '',
-    cookingTime: 0,
+    cookTime: '0',
     userOwner: userID
   })
 
@@ -34,6 +35,7 @@ const NewRecipe = () => {
     const ingredients = [...recipe.ingredients, '']
     setRecipe({ ...recipe, ingredients })
   }
+  console.log(recipe)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -100,12 +102,12 @@ const NewRecipe = () => {
           value={recipe.imageUrl}
           onChange={handleChange}
         />
-        <label htmlFor="cookingTime">Cooking Time (minutes)</label>
+        <label htmlFor="cookingTime">Cook Time: </label>
         <input
           type="number"
-          id="cookingTime"
-          name="cookingTime"
-          value={recipe.cookingTime}
+          id="cookTime"
+          name="cookTime"
+          value={recipe.cookTime}
           onChange={handleChange}
         />
         <button type="submit">Finish</button>
