@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 
 const NewRecipe = () => {
+  const navigate = useNavigate()
   const userID = useGetUserID()
   const [cookies, _] = useCookies(['access_token'])
   const [recipe, setRecipe] = useState({
@@ -16,8 +17,6 @@ const NewRecipe = () => {
     cookTime: '0',
     userOwner: userID
   })
-
-  const navigate = useNavigate()
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -35,7 +34,6 @@ const NewRecipe = () => {
     const ingredients = [...recipe.ingredients, '']
     setRecipe({ ...recipe, ingredients })
   }
-  console.log(recipe)
 
   const handleSubmit = async (event) => {
     event.preventDefault()

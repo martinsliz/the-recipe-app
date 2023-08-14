@@ -6,7 +6,7 @@ const Navbar = () => {
   const navigate = useNavigate()
   const logout = () => {
     setCookies('access_token', '')
-    window.localStorage.removeItem('userID')
+    window.localStorage.clear()
     navigate('/auth')
   }
   return (
