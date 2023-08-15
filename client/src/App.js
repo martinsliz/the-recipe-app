@@ -1,7 +1,6 @@
 import './App.css'
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-// import axios from 'axios'
 import Home from './pages/home'
 import Auth from './pages/auth'
 import Navbar from './components/Navbar'
