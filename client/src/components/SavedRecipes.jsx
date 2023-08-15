@@ -27,7 +27,7 @@ const SavedRecipes = () => {
 
   return (
     <div>
-      <h1>Saved Recipes</h1>
+      <h2>Your Recipes</h2>
       <ul>
         {savedRecipes.map((recipe) => (
           <li key={recipe._id}>
