@@ -35,7 +35,7 @@ const Home = () => {
     }
     fetchRecipes()
     fetchSavedRecipes()
-  }, [])
+  }, [userID])
 
   const saveRecipe = async (recipeID) => {
     try {
@@ -43,7 +43,7 @@ const Home = () => {
         recipeID,
         userID
       })
-      setRecipes(response.data)
+      setSavedRecipes(response.data.savedRecipes)
     } catch (error) {
       console.error(error)
     }
