@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useGetUserID } from '../hooks/useGetUserID'
 import { RECIPES_URL } from '../globals'
+import { useCookies } from 'react-cookie'
 
 const Home = () => {
   const [recipes, setRecipes] = useState([])
   const [savedRecipes, setSavedRecipes] = useState([])
   const userID = useGetUserID()
+  const [cookies, _] = useCookies(['access_token'])
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -37,10 +39,14 @@ const Home = () => {
 
   const saveRecipe = async (recipeID) => {
     try {
-      const response = await axios.put(`${RECIPES_URL}`, {
-        recipeID,
-        userID
-      })
+      const response = await axios.put(
+        `${RECIPES_URL}`,
+        {
+          recipeID,
+          userID
+        },
+        { headers: { authorization: cookies.access_token } }
+      )
       setSavedRecipes(response.data.savedRecipes)
     } catch (error) {
       console.error(error)
@@ -63,8 +69,8 @@ const Home = () => {
                 <button onClick={() => saveRecipe(recipe._id)}>Save</button>
               )}
             </div>
+            <div className="ingredient-input">{recipe.ingredients}</div>
             <div className="instructions">
-              <p>{recipe.ingredients}</p>
               <p>{recipe.instructions}</p>
             </div>
             <img src={recipe.imageUrl} alt={recipe.name} />

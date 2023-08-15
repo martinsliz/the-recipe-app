@@ -46,7 +46,7 @@ const NewRecipe = () => {
         }
       )
 
-      alert('Recipe Created')
+      // alert('Recipe Created')
       navigate('/')
     } catch (error) {
       console.error(error)
@@ -76,6 +76,7 @@ const NewRecipe = () => {
         {recipe.ingredients.map((ingredient, index) => (
           <input
             key={index}
+            className="ingredient-input"
             type="text"
             name="ingredients"
             value={ingredient}
