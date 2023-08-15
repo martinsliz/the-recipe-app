@@ -17,7 +17,6 @@ const SavedRecipes = () => {
           }
         )
         setSavedRecipes(response.data.savedRecipes)
-        // console.log(response.data)
       } catch (err) {
         console.log(err)
       }

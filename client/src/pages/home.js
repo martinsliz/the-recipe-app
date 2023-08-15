@@ -13,7 +13,6 @@ const Home = () => {
       try {
         const response = await axios.get(`${RECIPES_URL}`)
         setRecipes(response.data)
-        // console.log(response.data)
       } catch (err) {
         console.log(err)
       }
@@ -28,7 +27,6 @@ const Home = () => {
           }
         )
         setSavedRecipes(response.data.savedRecipes)
-        // console.log(response.data)
       } catch (err) {
         console.log(err)
       }
@@ -60,7 +58,7 @@ const Home = () => {
             <div>
               <h2>{recipe.name}</h2>
               {isRecipeSaved(recipe._id) ? (
-                <p>(You've saved this to your recipes)</p>
+                <h5>(Saved to your recipes)</h5>
               ) : (
                 <button onClick={() => saveRecipe(recipe._id)}>Save</button>
               )}
