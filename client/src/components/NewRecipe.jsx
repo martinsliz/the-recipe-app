@@ -7,14 +7,14 @@ import { useCookies } from 'react-cookie'
 const NewRecipe = () => {
   const navigate = useNavigate()
   const userID = useGetUserID()
-  const [cookies, _] = useCookies(['access_token'])
+  const [cookies, setCookies] = useCookies(['access_token'])
   const [recipe, setRecipe] = useState({
     name: '',
     description: '',
     ingredients: [],
     instructions: '',
     imageUrl: '',
-    cookTime: '0',
+    cookTime: '',
     userOwner: userID
   })
 
@@ -38,13 +38,9 @@ const NewRecipe = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.post(
-        'http://localhost:3001/recipes',
-        { ...recipe },
-        {
-          headers: { authorization: cookies.access_token }
-        }
-      )
+      await axios.post('http://localhost:3001/recipes', recipe, {
+        headers: { authorization: cookies.access_token }
+      })
 
       // alert('Recipe Created')
       navigate('/')
@@ -75,8 +71,8 @@ const NewRecipe = () => {
         <label htmlFor="ingredients">Ingredients</label>
         {recipe.ingredients.map((ingredient, index) => (
           <input
+            className="ingredient-disp"
             key={index}
-            className="ingredient-input"
             type="text"
             name="ingredients"
             value={ingredient}
@@ -103,7 +99,7 @@ const NewRecipe = () => {
         />
         <label htmlFor="cookingTime">Cook Time: </label>
         <input
-          type="number"
+          type="text"
           id="cookTime"
           name="cookTime"
           value={recipe.cookTime}

@@ -4,11 +4,13 @@ import { useNavigate, Link } from 'react-router-dom'
 const Navbar = () => {
   const [cookies, setCookies] = useCookies(['access_token'])
   const navigate = useNavigate()
+
   const logout = () => {
     setCookies('access_token', '')
     window.localStorage.clear()
     navigate('/auth')
   }
+
   return (
     <div className="navbar">
       <div>
